@@ -1,0 +1,6 @@
+models/
+*.bin
+# Personal files the skill creates for each user; never published
+profile.md
+lessons.md
+log.md
