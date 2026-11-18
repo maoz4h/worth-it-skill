@@ -39,6 +39,7 @@ Paste a link into Claude Code, with or without "worth it?". Several links at onc
 
 - **It learns from you:** if you disagree with a verdict ("too harsh", "this is actually useful"), it saves a rule to `lessons.md` and applies it next time.
 - **It keeps a log** in `log.md` of every link and verdict.
+- **It checks itself** before every answer: format, a real source for every claim, fit to your profile, and that the log and to-do were saved.
 - **It keeps a to-do list** in `todo.md`: the action items from every Focus and Later verdict. Ask "what's open?" to see them, "done <name>" to tick one off.
 
 ## Limits
