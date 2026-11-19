@@ -41,16 +41,15 @@ Paste a link into Claude Code, with or without "worth it?". Several links at onc
 
 ## Use it from your phone
 
-Claude Code on the phone runs in cloud sessions on one of your GitHub repos, and cloud sessions don't install plugins, so there the skill lives in a repo of its own:
+Claude Code on the phone runs in cloud sessions on a GitHub repo, so it needs a free GitHub account and one private repo. Setup is about 5 minutes, once:
 
-1. On github.com, create a new **private** repo (e.g. `my-worth-it`) and tick "Add a README" so it isn't empty. Private, because your profile, lessons and log will live there. Don't fork this repo: a fork of a public repo is public.
-2. In the Claude app, open **Code**, start a cloud session on that repo, and paste:
+1. On github.com: **+** → **New repository**, name it `my-worth-it`, choose **Private**, tick **Add a README**, create it.
+2. Give Claude access: open https://github.com/apps/claude/installations/select_target, pick your account, **Only select repositories** → `my-worth-it` → **Install**.
+3. In the Claude app, open **Code**, start a new session on `my-worth-it`, and paste:
 
-   > Copy the folder plugins/worth-it/skills/worth-it from github.com/maoz4h/worth-it-skill into `.claude/skills/worth-it/` in this repo. Add a CLAUDE.md that says: run the worth-it skill on every link I paste, and commit and push the `.worth-it/` folder after every change. Then commit and push.
+   > Set up worth-it here by following https://github.com/maoz4h/worth-it-skill/blob/main/PHONE-SETUP.md
 
-3. Paste a link in any session on that repo. The first time, it asks the onboarding questions and saves your profile in `.worth-it/`.
-
-Updates on the phone are manual: ask a session on that repo to "update worth-it from github.com/maoz4h/worth-it-skill". Each cloud session starts on a fresh machine, so the first link in a session takes a few minutes while the tools install.
+That's it. From then on, open a session on `my-worth-it` and paste links. Each session checks for a newer worth-it first, so the phone stays up to date too. The first link in a session takes a few minutes while the tools install.
 
 ## Limits
 

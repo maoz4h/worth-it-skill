@@ -2,6 +2,9 @@
 
 Newest first. The first line under each date is what the skill shows users after an update, so keep it to one plain sentence.
 
+## 2026-11-19 (5)
+Phone setup is now one sentence, and phone sessions keep worth-it up to date by themselves.
+
 ## 2026-11-19 (4)
 New users are told up front that the first link takes a few minutes, and the setup starts while they answer the onboarding questions.
 
