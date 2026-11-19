@@ -27,6 +27,7 @@ Before the first link, check for `profile.md` in the data folder.
 4. Answer language and length? (default: English, short)
 
 5. Turn on automatic updates, so you get improvements without doing anything? (recommended; only ask when worth-it is installed as a plugin)
+6. Want worth-it on your phone too? I can set it up from here in about 2 minutes. (only ask on a computer)
 
 Write their answers to `profile.md` (create `lessons.md`, `log.md` and `todo.md` empty if missing), and say they can change it any time by saying "update my profile". Keep only what they said: no guesses, no names of other people unless they gave them. If they skip it, judge for a general reader and ask again next time, at most once a day.
 
@@ -40,7 +41,22 @@ Keep every other setting, and check the file is still valid JSON after.
 
 Tell them it takes effect from their next Claude Code session, and that updates arrive quietly a few minutes after they start one. If they said no, tell them the manual way: `/plugin` → Marketplaces → worth-it-skill → Update marketplace. Note the answer in `profile.md` (`Auto-updates: on` or `off`) so you never ask again.
 
+If they said yes to the phone, do **Phone setup** below after you've judged their first link, so the link isn't kept waiting.
+
 Finally write the top `## ` heading of `CHANGELOG.md` (e.g. `2026-11-19 (2)`) to `seen-version`, so a new user isn't told about old updates.
+
+## Phone setup
+
+Claude Code on the phone runs only on a GitHub repo, so the phone needs a private repo of its own. Set it up from the computer when they say yes in onboarding, or later when they ask ("set up my phone"). Tell them what you're doing in one line per step.
+
+1. **GitHub account.** Ask if they have one; if not, they make one at github.com ("Continue with Google" is fastest), and in the Claude app they tap Code → Connect to GitHub once.
+2. **GitHub CLI.** If `gh` is missing, install it (`brew install gh` on a Mac, the distro package on Linux). If `gh auth status` fails, run `gh auth login --web --git-protocol https`, show them the one-time code it prints, and wait while they approve it in the browser.
+3. **The repo.** `gh repo create my-worth-it --private --add-readme` (if `my-worth-it` already exists, ask before reusing it). Clone it to a temp folder.
+4. **Fill it**, as `PHONE-SETUP.md` in https://github.com/maoz4h/worth-it-skill describes: the skill folder into `.claude/skills/worth-it/`, the `CLAUDE.md` section, and `.worth-it/` holding a copy of their current `profile.md`, `lessons.md`, `log.md`, `todo.md` and `seen-version` from the data folder, so the phone knows them from day one. Commit "Set up worth-it" and push; check the push succeeded.
+5. **Give Claude access.** Open https://github.com/apps/claude/installations/select_target in their browser (`open` on a Mac, `xdg-open` on Linux) and tell them: pick your account → Only select repositories → `my-worth-it` → Install. This one tap is GitHub's rule for any app; no command can do it for them.
+6. **Done.** Tell them: in the Claude app → Code, start a session on `my-worth-it` and paste a link. Phone sessions update worth-it by themselves. Say plainly that from now on the phone and the computer keep separate logs and to-do lists. Note `Phone: my-worth-it` in `profile.md`.
+
+If any step fails, stop and tell them exactly which one and what they can do by hand (the README's "Use it from your phone" section).
 
 ## For each link
 

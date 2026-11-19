@@ -15,7 +15,7 @@ In Claude Code, on a Mac or Linux computer:
 /plugin install worth-it@worth-it-skill
 ```
 
-Start a new session and paste a link. The first time, Claude asks five quick questions (your work, your interests, what you never want to see, answer language, and whether to turn on automatic updates) and saves your answers, so verdicts fit you. Say "update my profile" to change them.
+Start a new session and paste a link. The first time, Claude asks a few quick questions (your work, your interests, what you never want to see, answer language, automatic updates, and whether you want it on your phone too) and saves your answers, so verdicts fit you. Say "update my profile" to change them.
 
 The first link takes a few minutes: it installs yt-dlp, ffmpeg and whisper.cpp (with Homebrew on a Mac) and downloads a 550 MB speech model.
 
@@ -41,7 +41,9 @@ Paste a link into Claude Code, with or without "worth it?". Several links at onc
 
 ## Use it from your phone
 
-Claude Code on the phone runs in cloud sessions on a GitHub repo, so it needs a free GitHub account and one private repo. Setup is about 5 minutes, once:
+**Easiest, if you have a computer:** install the plugin there, then say "set up my phone" (onboarding also offers it). Claude creates a private repo, copies your profile and history into it, and opens the one GitHub page where you tap **Install**. You need a free GitHub account.
+
+**Phone only:** Claude Code on the phone runs in cloud sessions on a GitHub repo, so it needs a free GitHub account and one private repo. Setup is about 5 minutes, once:
 
 1. On github.com: **+** → **New repository**, name it `my-worth-it`, choose **Private**, tick **Add a README**, create it.
 2. Give Claude access: open https://github.com/apps/claude/installations/select_target, pick your account, **Only select repositories** → `my-worth-it` → **Install**.
