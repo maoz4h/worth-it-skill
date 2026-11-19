@@ -2,6 +2,9 @@
 
 Newest first. The first line under each date is what the skill shows users after an update, so keep it to one plain sentence.
 
+## 2026-11-19 (7)
+On a Mac without Homebrew, worth-it now explains the one-time install instead of failing quietly.
+
 ## 2026-11-19 (6)
 Want worth-it on your phone? Say "set up my phone" and it does the setup for you from your computer.
 

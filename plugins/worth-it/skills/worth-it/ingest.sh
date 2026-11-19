@@ -20,6 +20,9 @@ MAX_FRAMES=16
 # First run: install what's missing (Homebrew on a Mac, pip/apt/a source build on Linux).
 setup() {
   export PATH="$HOME/.local/bin:$PATH"
+  if [ "$(uname)" = Darwin ] && ! command -v brew >/dev/null; then
+    echo "SETUP_NEEDS_HOMEBREW: on a Mac the tools come from Homebrew (https://brew.sh), which isn't installed" >&2
+  fi
   if [ "$(uname)" = Darwin ] && command -v brew >/dev/null; then
     for p in yt-dlp ffmpeg whisper-cpp; do
       t=$p; [ $p = whisper-cpp ] && t=whisper-cli
