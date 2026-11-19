@@ -19,7 +19,7 @@ Before the first link, check for `profile.md` in the data folder.
 
 **Moving from the old install.** If it's missing but `~/.claude/skills/worth-it/profile.md` exists (the old git-clone version), copy `profile.md`, `lessons.md`, `log.md` and `todo.md` from there into the data folder, check they arrived, then tell the user they can delete the old folder with `rm -rf ~/.claude/skills/worth-it`. Skip the questions below.
 
-**Otherwise, ask these in one short message**, then judge the link right after they answer:
+**Otherwise, ask these in one short message**, then judge the link right after they answer. Start the message with one line: the first link takes a few minutes, because it downloads the tools and a speech model once (about 700 MB on a computer, so the audio is transcribed on their own machine and never sent anywhere); after that a reel takes about a minute. On a phone (a cloud session), say instead that the first link in each session takes a few minutes, and nothing is stored on the phone. Start the download (`"${CLAUDE_SKILL_DIR}/ingest.sh" --setup`) in the background while they answer.
 
 1. What do you do for work, and what are you building? (role, projects, stack; one line each)
 2. What else do you care about outside work? (hobbies, home, health, family, money, anything)

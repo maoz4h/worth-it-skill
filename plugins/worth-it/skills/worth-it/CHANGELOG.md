@@ -2,6 +2,9 @@
 
 Newest first. The first line under each date is what the skill shows users after an update, so keep it to one plain sentence.
 
+## 2026-11-19 (4)
+New users are told up front that the first link takes a few minutes, and the setup starts while they answer the onboarding questions.
+
 ## 2026-11-19 (3)
 Safer link handling: worth-it only downloads real web links, uses your browser sign-in only for the big social sites, and checks the speech model download.
 
