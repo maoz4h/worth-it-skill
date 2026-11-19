@@ -1,7 +1,9 @@
 models/
 *.bin
-# Personal files the skill creates for each user; never published
+# Personal data, if someone runs worth-it inside this repo
+.worth-it/
 profile.md
 lessons.md
 log.md
 todo.md
+seen-version

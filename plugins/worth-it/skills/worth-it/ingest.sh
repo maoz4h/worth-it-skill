@@ -12,7 +12,9 @@ set -uo pipefail
 URL="${1:?usage: ingest.sh <url> [out-dir] | ingest.sh --setup}"
 OUT="${2:-$(mktemp -d "${TMPDIR:-/tmp}/worth-it.XXXXXX")}"
 HERE="$(cd "$(dirname "$0")" && pwd)"
+# The speech model lives outside the skill folder, so plugin updates don't delete it (an old copy next to the script still works).
 MODEL="$HERE/models/ggml-large-v3-turbo-q5_0.bin"
+[ -f "$MODEL" ] || MODEL="${XDG_CACHE_HOME:-$HOME/.cache}/worth-it/ggml-large-v3-turbo-q5_0.bin"
 MAX_FRAMES=16
 
 # First run: install what's missing (Homebrew on a Mac, pip/apt/a source build on Linux).

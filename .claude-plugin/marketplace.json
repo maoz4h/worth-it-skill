@@ -1,0 +1,12 @@
+{
+  "name": "worth-it-skill",
+  "description": "Buzz filter for social-media links: is this reel worth your time?",
+  "owner": { "name": "worth-it" },
+  "plugins": [
+    {
+      "name": "worth-it",
+      "source": "./plugins/worth-it",
+      "description": "Paste an Instagram, TikTok, YouTube, X or LinkedIn link and get Focus, Later or Skip, the real source behind the hype, and what to do with it."
+    }
+  ]
+}
