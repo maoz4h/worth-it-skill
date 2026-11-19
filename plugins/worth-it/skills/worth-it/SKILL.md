@@ -10,7 +10,7 @@ The user wants to stop scrolling with FOMO. Your job: look at what a post actual
 ## Where things are
 
 - **Skill files** (replaced on every update, never write here): `${CLAUDE_SKILL_DIR}`, with `ingest.sh` and `CHANGELOG.md`.
-- **The user's data folder** (survives updates): `${CLAUDE_PLUGIN_DATA}`. It holds `profile.md`, `lessons.md`, `log.md`, `todo.md` and `seen-version`. Create it and the files when missing.
+- **The user's data folder** (survives updates): `${CLAUDE_PLUGIN_DATA}`. It holds `profile.md`, `lessons.md`, `log.md`, `todo.md`, `seen-version` and `last-review`. Create it and the files when missing.
 - If the data path above still starts with a dollar sign, worth-it isn't installed as a plugin (for example a copy in a repo for phone sessions): then the data folder is `.worth-it/` at the root of the current repo, and you commit and push it after every change so the next session has it.
 
 ## First time: onboarding
@@ -40,7 +40,7 @@ Keep every other setting, and check the file is still valid JSON after.
 
 Tell them it takes effect from their next Claude Code session, and that updates arrive quietly a few minutes after they start one. If they said no, tell them the manual way: `/plugin` → Marketplaces → worth-it-skill → Update marketplace. Note the answer in `profile.md` (`Auto-updates: on` or `off`) so you never ask again.
 
-Finally write the date of the newest entry in `CHANGELOG.md` to `seen-version`, so a new user isn't told about old updates.
+Finally write the top `## ` heading of `CHANGELOG.md` (e.g. `2026-11-19 (2)`) to `seen-version`, so a new user isn't told about old updates.
 
 ## For each link
 
@@ -81,6 +81,15 @@ For every Focus or Later verdict, add its "How to implement" as one checkbox lin
 - "done <name>" or "I did X": tick it, move it to `## Done` with the date.
 - A verdict changed (a correction or new info): move its item to match, or remove it if it's now Skip.
 
+## Weekly review
+
+So recommendations don't get forgotten, review the open to-do items once a week, with no setup needed:
+
+- **Automatically:** when you answer a link and `last-review` is missing or 7 or more days old, and `todo.md` has open items, add a short review after the verdict: every open item, Focus first, one line each with its next step and how old it is (from its date in `log.md`). For an item open more than 2 weeks, suggest doing it this week, moving it down, or dropping it. End with "Which one this week?" Then write today's date to `last-review`.
+- **On demand:** "weekly review" or "review my to-do" gives the same review any time.
+- **The first time** a Focus or Later item lands in `todo.md`, tell the user in one line: "I'll remind you of open items once a week, when you next send a link. Say 'weekly review' any time."
+- **A real weekly reminder, even without sending links:** if they ask, or keep ignoring the in-answer review, suggest a scheduled task. It works when the data folder is `.worth-it/` in a repo (the phone setup): in Claude Code run `/schedule` and ask for "every Sunday at 10:00, run a worth-it weekly review of `.worth-it/todo.md` in this repo." A scheduled task runs in the cloud, so it can't read the data folder on their own computer.
+
 ## Learn from corrections
 
 When the user disagrees with a verdict ("this is actually useful", "too harsh", "Focus, not Later", "stop flagging X"), learn from it without being asked:
@@ -98,7 +107,8 @@ Run this before sending; fix anything that fails, don't mention the check.
 2. **Sources:** every "it's real" or "the original is" has a link you actually opened; you never say you watched the video; if there was no transcript or video, you said so.
 3. **Fit:** `lessons.md` rules applied; the "for you" part names something real from `profile.md`, or says none.
 4. **Saved:** the log line is appended, a Focus or Later item is in `todo.md`, and when the data folder is in a repo, the commit and push succeeded (check the output, don't assume).
-5. **What's new:** if the newest date in `CHANGELOG.md` is later than `seen-version`, end the answer with one line, `**worth-it was updated:** <the first line under that date>`, then write the new date to `seen-version`.
+5. **Weekly review:** if `last-review` is 7 or more days old and there are open items, the review is in this answer.
+6. **What's new:** if the top `## ` heading of `CHANGELOG.md` differs from `seen-version`, end the answer with one line, `**worth-it was updated:** <the first line under that heading>`, then write that heading to `seen-version`.
 
 ## Rules
 

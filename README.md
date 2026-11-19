@@ -37,6 +37,7 @@ Paste a link into Claude Code, with or without "worth it?". Several links at onc
 - **It checks itself** before every answer: format, a real source for every claim, fit to your profile, and that the log and to-do were saved.
 - **It keeps a log** of every link and verdict.
 - **It keeps a to-do list** of the action items from every Focus and Later verdict. Ask "what's open?" to see them, "done <name>" to tick one off.
+- **It reminds you weekly:** once a week, the next verdict also lists your open to-do items, oldest first, so good ideas don't get forgotten. Say "weekly review" any time. On the phone setup you can also schedule a real Sunday reminder with `/schedule`.
 
 ## Use it from your phone
 
