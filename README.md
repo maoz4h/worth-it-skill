@@ -8,6 +8,8 @@ How it works: it downloads the video, transcribes it locally with [whisper.cpp](
 
 ## Install
 
+**Start on a computer**, even if you'll mostly use it on your phone: the computer setup takes two commands, and from there worth-it sets up your phone for you.
+
 In Claude Code, on a Mac or Linux computer:
 
 ```
