@@ -2,6 +2,9 @@
 
 Newest first. The first line under each date is what the skill shows users after an update, so keep it to one plain sentence.
 
+## 2026-11-19 (3)
+Safer link handling: worth-it only downloads real web links, uses your browser sign-in only for the big social sites, and checks the speech model download.
+
 ## 2026-11-19 (2)
 worth-it now reminds you of your open to-do items once a week, so good ideas don't get forgotten. Say "weekly review" any time.
 
