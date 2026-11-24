@@ -10,7 +10,7 @@ The user wants to stop scrolling with FOMO. Your job: look at what a post actual
 ## Where things are
 
 - **Skill files** (replaced on every update, never write here): `${CLAUDE_SKILL_DIR}`, with `ingest.sh` and `CHANGELOG.md`.
-- **The user's data folder** (survives updates): `${CLAUDE_PLUGIN_DATA}`. It holds `profile.md`, `lessons.md`, `log.md`, `todo.md`, `seen-version` and `last-review`. Create it and the files when missing.
+- **The user's data folder** (survives updates): `${CLAUDE_PLUGIN_DATA}`. It holds `profile.md`, `lessons.md`, `log.md`, `todo.md`, `asked.md`, `seen-version` and `last-review`. Create it and the files when missing.
 - If the data path above still starts with a dollar sign, worth-it isn't installed as a plugin (for example a copy in a repo for phone sessions): then the data folder is `.worth-it/` at the root of the current repo, and you commit and push it after every change so the next session has it.
 
 ## First time: onboarding
@@ -52,7 +52,7 @@ Claude Code on the phone runs only on a GitHub repo, so the phone needs a privat
 1. **GitHub account.** Ask if they have one; if not, they make one at github.com ("Continue with Google" is fastest), and in the Claude app they tap Code → Connect to GitHub once.
 2. **GitHub CLI.** If `gh` is missing, install it (`brew install gh` on a Mac, the distro package on Linux). If `gh auth status` fails, the sign-in is interactive, so ask them to type `! gh auth login --web --git-protocol https` in the Claude Code prompt themselves, approve it in the browser, and tell you when it's done.
 3. **The repo.** `gh repo create my-worth-it --private --add-readme` (if `my-worth-it` already exists, ask before reusing it). Clone it to a temp folder.
-4. **Fill it**, as `PHONE-SETUP.md` in https://github.com/maoz4h/worth-it-skill describes: the skill folder into `.claude/skills/worth-it/`, the `CLAUDE.md` section, and `.worth-it/` holding a copy of their current `profile.md`, `lessons.md`, `log.md`, `todo.md` and `seen-version` from the data folder, so the phone knows them from day one. Commit "Set up worth-it" and push; check the push succeeded.
+4. **Fill it**, as `PHONE-SETUP.md` in https://github.com/maoz4h/worth-it-skill describes: the skill folder into `.claude/skills/worth-it/`, the `CLAUDE.md` section, and `.worth-it/` holding a copy of their current `profile.md`, `lessons.md`, `log.md`, `todo.md`, `asked.md` and `seen-version` from the data folder, so the phone knows them from day one. Commit "Set up worth-it" and push; check the push succeeded.
 5. **Give Claude access.** Open https://github.com/apps/claude/installations/select_target in their browser (`open` on a Mac, `xdg-open` on Linux) and tell them: pick your account → Only select repositories → `my-worth-it` → Install. This one tap is GitHub's rule for any app; no command can do it for them.
 6. **Done.** Tell them: in the Claude app → Code, start a session on `my-worth-it` and paste a link. Phone sessions update worth-it by themselves. Say plainly that from now on the phone and the computer keep separate logs and to-do lists. Note `Phone: my-worth-it` in `profile.md`.
 
@@ -83,7 +83,15 @@ Per link:
 - **Later:** sound and useful, not urgent.
 - **Skip:** the idea itself is hype, wrong, or has nothing for them (then the "Ideas for you" line says "none").
 
-Nothing else: no intro, no recap. With several links: one line on top ("1 of 4 worth your focus"), then each one, Focus first.
+Nothing else: no intro, no recap, at most about 6 bullets per link. With several links: one line on top ("1 of 4 worth your focus"), then each one, Focus first. End with at most one question (a pattern question, below, takes its place).
+
+## Ask on a pattern
+
+When the same kind of post keeps coming (three or more in 30 days in `log.md`) and `profile.md` is missing something that would change your verdict, ask one short question at the very end of the answer. Example: printable-parts reels keep coming and the profile doesn't say whether they own a 3D printer: "You send a lot of these. Do you own a 3D printer? Which model?"
+- Only when the answer would change a verdict. Curiosity isn't enough.
+- One question at a time, and never one that `profile.md` already answers or that's listed in `asked.md` in the data folder.
+- Record every question in `asked.md`: `- <date> · <question> · <answered|skipped>`. A skipped question isn't asked again for 3 months.
+- When they answer, add it to `profile.md` in their words (nothing they didn't say) and mark it answered. When the data folder is in a repo, commit and push both files.
 
 ## Keep a log
 
@@ -119,9 +127,9 @@ When the user disagrees with a verdict ("this is actually useful", "too harsh", 
 
 Run this before sending; fix anything that fails, don't mention the check.
 
-1. **Format:** verdict line first, short bullets, no tables, no intro or recap (or what `profile.md` asks for).
+1. **Format:** verdict line first, at most about 6 bullets, no tables, no intro or recap, at most one question at the end (or what `profile.md` asks for).
 2. **Sources:** every "it's real" or "the original is" has a link you actually opened; you never say you watched the video; if there was no transcript or video, you said so.
-3. **Fit:** `lessons.md` rules applied; the "for you" part names something real from `profile.md`, or says none.
+3. **Fit:** `lessons.md` rules applied; the "for you" part names something real from `profile.md`, or says none; any question follows "Ask on a pattern".
 4. **Saved:** the log line is appended, a Focus or Later item is in `todo.md`, and when the data folder is in a repo, the commit and push succeeded (check the output, don't assume).
 5. **Weekly review:** if `last-review` is 7 or more days old and there are open items, the review is in this answer.
 6. **What's new:** if the top `## ` heading of `CHANGELOG.md` differs from `seen-version`, end the answer with one line, `**worth-it was updated:** <the first line under that heading>`, then write that heading to `seen-version`.
