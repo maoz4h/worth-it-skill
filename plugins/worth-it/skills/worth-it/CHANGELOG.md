@@ -2,6 +2,9 @@
 
 Newest first. The first line under each date is what the skill shows users after an update, so keep it to one plain sentence.
 
+## 2026-11-24
+When the same kind of post keeps coming, worth-it may ask you one short question, so its verdicts fit you better. Answers are also shorter now.
+
 ## 2026-11-19 (7)
 On a Mac without Homebrew, worth-it now explains the one-time install instead of failing quietly.
 
