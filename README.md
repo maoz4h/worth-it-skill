@@ -59,3 +59,7 @@ That's it. From then on, open a session on `my-worth-it` and paste links. Each s
 
 - Instagram and others sometimes block downloads from servers or ask for a sign-in. On a Mac the script falls back to your browser's cookies (read locally). Otherwise Claude reads the page text or asks you for a screenshot.
 - Claude reads the transcript and frames; it doesn't watch the video.
+
+## Personal use
+
+This is a personal tool. It runs yt-dlp on your own computer to look at posts you chose to check, and it keeps nothing public. Downloading from Instagram, TikTok and other platforms may be against their terms, so use it only for your own viewing and respect each platform's terms. It never posts, likes, follows or shares anything.
